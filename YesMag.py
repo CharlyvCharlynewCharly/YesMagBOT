@@ -136,8 +136,14 @@ def ChangePage():
     sleep(1)
 
 def Statistiques():
-    buttonStat = driver.find_element_by_xpath("/html/body/ion-app/ng-component/ion-split-pane/ion-menu/div/ion-content/div[2]/ion-list/button[4]")
-    buttonStat.click()
+    try:
+        buttonStat = driver.find_element_by_xpath("/html/body/ion-app/ng-component/ion-split-pane/ion-menu/div/ion-content/div[2]/ion-list/button[4]")
+        buttonStat.click()
+    except:
+        driver.refresh()
+        buttonStat = driver.find_element_by_xpath(
+            "/html/body/ion-app/ng-component/ion-split-pane/ion-menu/div/ion-content/div[2]/ion-list/button[4]")
+        buttonStat.click()
     print("[CHECK STATISTIQUES]")
     sleep(1)
     Avriltime = driver.find_element_by_xpath("/html/body/ion-app/ng-component/ion-split-pane/ion-nav/page-stats/ion-content/div[2]/ion-list[2]/ion-item[1]/div[1]/div/ion-label/strong")
